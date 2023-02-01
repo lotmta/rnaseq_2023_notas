@@ -36,3 +36,39 @@ rse <- SummarizedExperiment(
 ## Exploremos el objeto resultante
 rse
 
+## Número de genes y muestras
+dim(rse)
+
+## IDs de nuestros genes y muestras
+dimnames(rse)
+
+## Nombres de tablas de cuentas que tenemos (RPKM, CPM, counts, logcounts, etc)
+assayNames(rse)
+
+## El inicio de nuestra tabla de cuentas
+head(assay(rse))
+
+## Información de los genes en un objeto de Bioconductor
+rowRanges(rse)
+
+## Tabla con información de los genes
+rowData(rse) # es idéntico a 'mcols(rowRanges(rse))'
+
+# Ejercicio
+## Comando 1
+rse[1:2, ]
+
+## Comando 2
+rse[, c("A", "D", "F")]
+
+## Explora el objeto rse de forma interactiva
+library("iSEE")
+iSEE::iSEE(rse)
+
+
+## Descarguemos unos datos de spatialLIBD
+sce_layer <- spatialLIBD::fetch_data("sce_layer")
+
+iSEE::iSEE(sce_layer)
+
+
